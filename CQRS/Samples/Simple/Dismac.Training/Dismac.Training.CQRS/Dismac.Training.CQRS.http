@@ -1,0 +1,6 @@
+@Dismac.Training.CQRS_HostAddress = http://localhost:5211
+
+GET {{Dismac.Training.CQRS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
