@@ -1,0 +1,6 @@
+@Dismac.HttpVerbs_HostAddress = http://localhost:5147
+
+GET {{Dismac.HttpVerbs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
