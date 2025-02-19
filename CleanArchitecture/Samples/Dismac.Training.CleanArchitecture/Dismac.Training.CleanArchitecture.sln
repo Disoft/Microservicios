@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Customer", "01. Customer", "{E945524B-C2EE-465E-BAD2-CEC844DB1AD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Api", "01. Api", "{672F2110-F0D5-4FDB-8893-DC4CEE2CD807}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Api", "src\Services\Customer\Customer.Api\Customer.Api.csproj", "{04417653-A0E7-4E15-9D1A-E1F219B252D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04417653-A0E7-4E15-9D1A-E1F219B252D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04417653-A0E7-4E15-9D1A-E1F219B252D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04417653-A0E7-4E15-9D1A-E1F219B252D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04417653-A0E7-4E15-9D1A-E1F219B252D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{672F2110-F0D5-4FDB-8893-DC4CEE2CD807} = {E945524B-C2EE-465E-BAD2-CEC844DB1AD3}
+		{04417653-A0E7-4E15-9D1A-E1F219B252D2} = {672F2110-F0D5-4FDB-8893-DC4CEE2CD807}
+	EndGlobalSection
+EndGlobal
