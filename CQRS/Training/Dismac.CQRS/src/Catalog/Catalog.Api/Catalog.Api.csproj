@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.2">
@@ -17,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Catalog.Persistence.Database\Catalog.Persistence.Database.csproj" />
+    <ProjectReference Include="..\Catalog.Service.EventHandler\Catalog.Service.EventHandler.csproj" />
     <ProjectReference Include="..\Catalog.Service.Queries\Catalog.Service.Queries.csproj" />
   </ItemGroup>
 

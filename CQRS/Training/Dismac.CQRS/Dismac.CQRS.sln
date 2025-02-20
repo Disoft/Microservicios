@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{0DB160
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Common.Utils", "src\Common\Service.Common.Utils\Service.Common.Utils.csproj", "{372D4E50-0E51-47DD-88ED-828AEA8634CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Service.EventHandler", "src\Catalog\Catalog.Service.EventHandler\Catalog.Service.EventHandler.csproj", "{85D670D2-7AD3-478F-83AB-D2B85E0A645A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{372D4E50-0E51-47DD-88ED-828AEA8634CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{372D4E50-0E51-47DD-88ED-828AEA8634CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{372D4E50-0E51-47DD-88ED-828AEA8634CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85D670D2-7AD3-478F-83AB-D2B85E0A645A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85D670D2-7AD3-478F-83AB-D2B85E0A645A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85D670D2-7AD3-478F-83AB-D2B85E0A645A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85D670D2-7AD3-478F-83AB-D2B85E0A645A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +71,6 @@ Global
 		{6382A6AC-D15E-4C0D-A808-2B416AE2EAB5} = {7C28C1DC-FA23-4BA6-984E-2B8B06B8D022}
 		{FC8757F2-A2E9-4F6F-AAF8-1EECF58E8D97} = {D88CC370-4581-470B-9CC9-7517BBFB7D64}
 		{372D4E50-0E51-47DD-88ED-828AEA8634CE} = {0DB1605D-A5BC-43ED-9228-097672402A9F}
+		{85D670D2-7AD3-478F-83AB-D2B85E0A645A} = {D88CC370-4581-470B-9CC9-7517BBFB7D64}
 	EndGlobalSection
 EndGlobal

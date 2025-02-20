@@ -1,4 +1,5 @@
 using Catalog.Persistence.Database;
+using Catalog.Service.EventHandler;
 using Catalog.Service.Queries;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(
     );
 
 builder.Services.AddTransient<IProductQueryService, ProductQueryService>();
+//Dependency Injection - MediatR
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ProductCreateEventHandler).Assembly));
 
 var app = builder.Build();
 
