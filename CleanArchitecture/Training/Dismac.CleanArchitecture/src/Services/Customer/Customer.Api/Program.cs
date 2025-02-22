@@ -1,3 +1,4 @@
+using Customer.Api.Configuration;
 using Customer.Api.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,13 +10,8 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddDbContext<CustomerDbContext>(
-                    opts =>
-                    opts.UseSqlServer(
-                            builder.Configuration.GetConnectionString("DefaultConnection"),
-                            x => x.MigrationsHistoryTable("_EFMigrationHistory", "Customer")
-                            )
-                        );
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 

@@ -4,8 +4,8 @@ namespace Customer.Api.Controllers
 {
     [ApiController]
     [Route("/")]
-    public class DefaultController(
-        ILogger<DefaultController> _logger) : ControllerBase
+    public class CustomerController(
+        ILogger<CustomerController> _logger) : ControllerBase
     {
         [HttpGet]
         public string Get()
