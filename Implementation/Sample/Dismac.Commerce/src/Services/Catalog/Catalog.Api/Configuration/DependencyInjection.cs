@@ -1,7 +1,9 @@
 ﻿using Catalog.Persistence.Database;
 using Catalog.Service.EventHandler;
 using Catalog.Service.Queries;
+using HealthChecks.UI.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Service.Common.Logging;
 
 namespace Customer.Api.Configuration
@@ -22,6 +24,23 @@ namespace Customer.Api.Configuration
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ProductCreateEventHandler).Assembly));
             PapertrailLoggerSetup(config, loggingBuilder);
+
+            //HealthChecks
+
+            services.AddHealthChecks()
+                .AddCheck("self", () => HealthCheckResult.Healthy())
+                .AddDbContextCheck<ApplicationDbContext>();
+
+            var sqliteConnectionString = config.GetValue<string>("HealthChecksUI:HealthCheckDatabaseConnectionString");
+
+            services.AddDbContext<HealthChecksDb>(
+                opts =>
+                opts.UseSqlite(sqliteConnectionString)
+                );
+
+            services.AddHealthChecksUI();
+
+            //HealthChecks
 
             return services;
         }

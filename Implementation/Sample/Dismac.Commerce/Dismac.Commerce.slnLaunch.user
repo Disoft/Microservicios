@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "src\\Services\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "src\\Services\\Customer\\Customer.Api\\Customer.Api.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
