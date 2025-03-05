@@ -1,4 +1,8 @@
 using Catalog.Api.Configuration;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using HealthChecks.UI.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddCatalogServiceConfiguration(builder.Configuration);
+builder.Services.AddCatalogServiceConfiguration(builder.Configuration, builder.Logging);
 
 var app = builder.Build();
 
@@ -19,6 +23,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
+
+//HealthCheck mapping
+app.MapHealthChecks("/hc", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+
+app.MapHealthChecksUI();
 
 app.MapControllers();
 
