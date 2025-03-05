@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Customer.Persistence.Database\Customer.Persistence.Database.csproj" />
     <ProjectReference Include="..\Customer.Service.EventHandler\Customer.Service.EventHandler.csproj" />
+    <ProjectReference Include="..\Customer.Service.Queries\Customer.Service.Queries.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,7 +10,7 @@ namespace Customer.Api.Configuration
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddComponentsRequired(this IServiceCollection services, IConfiguration config, ILoggingBuilder loggingBuilder)
+        public static IServiceCollection AddComponentsRequired(this IServiceCollection services, IConfiguration config, ILoggingBuilder loggingBuilder, WebApplicationBuilder? builder)
         {
             services.AddDbContext<ApplicationDbContext>(
                  opts =>
@@ -23,7 +23,7 @@ namespace Customer.Api.Configuration
             services.AddTransient<IProductInStockQueryService, ProductInStockQueryService>();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ProductCreateEventHandler).Assembly));
-            PapertrailLoggerSetup(config, loggingBuilder);
+            PapertrailLoggerSetup(config, loggingBuilder, builder);
 
             //HealthChecks
 
@@ -33,29 +33,29 @@ namespace Customer.Api.Configuration
 
             var sqliteConnectionString = config.GetValue<string>("HealthChecksUI:HealthCheckDatabaseConnectionString");
 
-            services.AddDbContext<HealthChecksDb>(
-                opts =>
-                opts.UseSqlite(sqliteConnectionString)
-                );
-
-            services.AddHealthChecksUI();
+            services.AddHealthChecksUI()
+                .AddSqliteStorage(sqliteConnectionString);
 
             //HealthChecks
 
             return services;
         }
 
-        private static void PapertrailLoggerSetup(IConfiguration config, ILoggingBuilder loggingBuilder)
+        private static void PapertrailLoggerSetup(IConfiguration config, ILoggingBuilder loggingBuilder, WebApplicationBuilder? builder)
         {
             var papertrailConfig = config.GetSection("Papertrail");
             string papertrailHost = papertrailConfig["host"];
             int papertrailPort = Convert.ToInt32(papertrailConfig["port"]);
 
-            loggingBuilder.AddProvider(
-                new SyslogLoggerProvider(
-                    papertrailHost,
-                    papertrailPort,
-                    null));
+            if (builder.Environment.IsDevelopment())
+            {
+                loggingBuilder.AddProvider(
+                    new SyslogLoggerProvider(
+                        papertrailHost,
+                        papertrailPort,
+                        null));
+
+            }
         }
     }
 }

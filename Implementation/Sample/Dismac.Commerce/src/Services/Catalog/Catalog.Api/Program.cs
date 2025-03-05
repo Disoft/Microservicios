@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddComponentsRequired(builder.Configuration, builder.Logging);
+builder.Services.AddComponentsRequired(builder.Configuration, builder.Logging, builder);
 
 var app = builder.Build();
 
@@ -21,6 +21,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    
 }
 
 app.UseAuthorization();

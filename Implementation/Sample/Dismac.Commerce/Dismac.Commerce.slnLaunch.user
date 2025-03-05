@@ -4,10 +4,14 @@
     "Projects": [
       {
         "Path": "src\\Services\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
-        "Action": "StartWithoutDebugging"
+        "Action": "Start"
       },
       {
-        "Path": "src\\Services\\Customer\\Customer.Api\\Customer.Api.csproj",
+        "Path": "src\\Services\\Order\\Order.Api\\Order.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\Services\\Catalog\\Catalog.Listener\\Catalog.Listener.csproj",
         "Action": "Start"
       }
     ]
