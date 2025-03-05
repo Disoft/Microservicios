@@ -1,7 +1,7 @@
 ﻿using Customer.Service.EventHandler.Commands;
 using Customer.Service.Queries.DTOs;
 using MediatR;
-//using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -10,11 +10,12 @@ using Service.Common.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Customer.Api.Controllers
 {
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("v1/clients")]
     public class ClientController : ControllerBase
@@ -36,6 +37,8 @@ namespace Customer.Api.Controllers
         [HttpGet]
         public async Task<DataCollection<ClientDto>> GetAll(int page = 1, int take = 10, string ids = null) 
         {
+            var userId = User.Claims.Single(x => x.Type.Equals(ClaimTypes.NameIdentifier)).Value;
+
             IEnumerable<int> clients = null;
 
             if (!string.IsNullOrEmpty(ids)) 

@@ -23,6 +23,9 @@ builder.Services.AddDbContext<OrderDbContext>(
     )
 );
 
+// HttpContextAccessor
+//builder.Services.AddHttpContextAccessor();
+
 // ApiUrls
 builder.Services.Configure<ApiUrls>(opts => builder.Configuration.GetSection("ApiUrls").Bind(opts));
 
