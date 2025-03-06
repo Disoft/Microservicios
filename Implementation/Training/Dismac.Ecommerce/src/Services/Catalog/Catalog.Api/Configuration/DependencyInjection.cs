@@ -38,7 +38,7 @@ namespace Catalog.Api.Configuration
             var sqliteConnectionString = configuration.GetValue<string>("HealthChecksUI:HealthCheckDatabaseConnectionString");
 
             services.AddHealthChecksUI()
-                .AddSqliteStorage(sqliteConnectionString); ;
+                .AddSqliteStorage(sqliteConnectionString);
 
             return services;
         }

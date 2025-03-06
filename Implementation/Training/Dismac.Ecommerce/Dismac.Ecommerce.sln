@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Shared", "src\Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Shared.Logging", "src\Services\Shared\Service.Shared.Logging\Service.Shared.Logging.csproj", "{D76EE123-3A24-4289-932F-CE1841E5DFA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Tests", "src\Services\Catalog\Catalog.Tests\Catalog.Tests.csproj", "{3F974817-8E89-417A-A7A1-976BA97634A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{D76EE123-3A24-4289-932F-CE1841E5DFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D76EE123-3A24-4289-932F-CE1841E5DFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D76EE123-3A24-4289-932F-CE1841E5DFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F974817-8E89-417A-A7A1-976BA97634A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F974817-8E89-417A-A7A1-976BA97634A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F974817-8E89-417A-A7A1-976BA97634A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F974817-8E89-417A-A7A1-976BA97634A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,5 +115,6 @@ Global
 		{44AB3B6B-0914-4E32-834B-4DB1E928265B} = {B7F7D667-B179-41D6-8FC3-A88208E623A9}
 		{4170429A-E4FF-4C70-8443-1972EEF608E4} = {4FE530B9-6983-42A2-B23C-069E8EC8CD51}
 		{D76EE123-3A24-4289-932F-CE1841E5DFA6} = {71708025-9DFE-4867-997E-9084942A8ED3}
+		{3F974817-8E89-417A-A7A1-976BA97634A0} = {DAF6F4BD-5C62-434E-8302-D889FF67839C}
 	EndGlobalSection
 EndGlobal
