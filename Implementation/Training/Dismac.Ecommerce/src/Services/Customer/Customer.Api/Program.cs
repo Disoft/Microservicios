@@ -1,10 +1,10 @@
-//using Customer.Persistence.Database;
-//using Customer.Service.EventHandler.Commands;
+using Customer.Service.EventHandlers.Commands;
+using Customer.Persistence.Database;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-//using Order.Service.Queries;
+using Customer.Service.Queries;
 using System.Reflection;
 using System.Text;
 
@@ -17,18 +17,18 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 // Event handlers
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ClientCreateCommand).Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ClientCreateCommand).Assembly));
 
 // Query services
-//builder.Services.AddTransient<IClientQueryService, ClientQueryService>();
+builder.Services.AddTransient<IClientQueryService, ClientQueryService>();
 
 // Database
-//builder.Services.AddDbContext<CustomerDbContext>(
-//options => options.UseSqlServer(
-//                    builder.Configuration.GetConnectionString("CustomerConnection"),
-//                    x => x.MigrationsHistoryTable("_EFMigrationsHistory", "Customer")
-//                )
-//            );
+builder.Services.AddDbContext<CustomerDbContext>(
+options => options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("DefaultConnection"),
+                    x => x.MigrationsHistoryTable("_EFMigrationsHistory", "Customer")
+                )
+            );
 
 // Add Authentication
 var secretKey = Encoding.ASCII.GetBytes(
