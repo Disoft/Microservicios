@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Order.Persistence.Database;
+using Order.Service.EventHandlers;
 using Order.Service.Proxy;
 using Order.Service.Proxy.Catalog;
 

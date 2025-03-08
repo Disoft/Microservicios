@@ -17,8 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Service.Shared.Utils\Service.Shared.Utils.csproj" />
     <ProjectReference Include="..\Order.Persistence.Database\Order.Persistence.Database.csproj" />
+    <ProjectReference Include="..\Order.Service.EventHandlers\Order.Service.EventHandlers.csproj" />
     <ProjectReference Include="..\Order.Service.Proxy\Order.Service.Proxy.csproj" />
+    <ProjectReference Include="..\Order.Shared\Order.Shared.csproj" />
   </ItemGroup>
 
 </Project>

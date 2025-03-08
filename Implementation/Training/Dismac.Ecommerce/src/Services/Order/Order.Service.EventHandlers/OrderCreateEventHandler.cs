@@ -25,7 +25,7 @@ namespace Order.Service.EventHandlers
             ILogger<OrderCreateEventHandler> logger)
         {
             _context = context;
-            //_catalogProxy = catalogProxy;
+            _catalogProxy = catalogProxy;
             _logger = logger;
         }
 

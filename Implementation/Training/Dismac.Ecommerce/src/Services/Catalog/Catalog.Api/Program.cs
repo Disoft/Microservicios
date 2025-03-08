@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddCatalogServiceConfiguration(builder.Configuration, builder.Logging);
+builder.Services.AddCatalogServiceConfiguration(builder.Configuration, builder.Logging, builder);
 
 var app = builder.Build();
 

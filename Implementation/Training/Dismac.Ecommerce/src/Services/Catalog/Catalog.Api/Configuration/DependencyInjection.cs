@@ -10,7 +10,11 @@ namespace Catalog.Api.Configuration
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddCatalogServiceConfiguration(this IServiceCollection services, IConfiguration configuration, ILoggingBuilder loggingBuilder) 
+        public static IServiceCollection AddCatalogServiceConfiguration(
+            this IServiceCollection services,
+            IConfiguration configuration,
+            ILoggingBuilder loggingBuilder,
+            WebApplicationBuilder builder) 
         {
             //DbContext configuration
             services.AddDbContext<CatalogDbContext>(
@@ -28,7 +32,7 @@ namespace Catalog.Api.Configuration
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ProductCreateCommand).Assembly));
 
             //Logging (Papertrail)
-            PapertrailSetup(configuration, loggingBuilder);
+            PapertrailSetup(configuration, loggingBuilder, builder);
 
             //Healtcheck
             services.AddHealthChecks()
@@ -43,17 +47,23 @@ namespace Catalog.Api.Configuration
             return services;
         }
 
-        private static void PapertrailSetup(IConfiguration configuration, ILoggingBuilder loggingBuilder)
+        private static void PapertrailSetup(
+            IConfiguration configuration,
+            ILoggingBuilder loggingBuilder,
+            WebApplicationBuilder builder)
         {
             var papertrailConfig = configuration.GetSection("Papertrail");
             string papertrailHost = papertrailConfig["host"];
             int papertrailPort = Convert.ToInt32(papertrailConfig["port"]);
 
-            loggingBuilder.AddProvider(
-                new SyslogLoggerProvider(
-                    papertrailHost,
-                    papertrailPort,
-                    null));
+            if (builder.Environment.IsProduction())
+            {
+                loggingBuilder.AddProvider(
+                    new SyslogLoggerProvider(
+                        papertrailHost,
+                        papertrailPort,
+                        null));
+            }
         }
     }
 }
