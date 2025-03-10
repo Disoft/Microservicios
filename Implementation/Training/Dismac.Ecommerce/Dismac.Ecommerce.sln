@@ -89,6 +89,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Service.EventHandl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Service.Queries", "src\Services\Customer\Customer.Service.Queries\Customer.Service.Queries.csproj", "{C8FAAC35-6152-487F-B050-893D5D6D58EE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07. Listeners", "07. Listeners", "{9AF5B354-0A88-4B73-9F61-8CE59E82CDA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Listener", "src\Services\Catalog\Catalog.Listener\Catalog.Listener.csproj", "{62EAD1CC-816A-44C3-B7A4-DA0DB8BC7D40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -175,6 +179,10 @@ Global
 		{C8FAAC35-6152-487F-B050-893D5D6D58EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8FAAC35-6152-487F-B050-893D5D6D58EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8FAAC35-6152-487F-B050-893D5D6D58EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62EAD1CC-816A-44C3-B7A4-DA0DB8BC7D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62EAD1CC-816A-44C3-B7A4-DA0DB8BC7D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62EAD1CC-816A-44C3-B7A4-DA0DB8BC7D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62EAD1CC-816A-44C3-B7A4-DA0DB8BC7D40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -220,5 +228,7 @@ Global
 		{4FDE2918-0AC6-42EF-9A62-64D84F5EE043} = {1354FA72-C2F9-4E6D-BD44-D5F77EFE4FD8}
 		{D193381E-4ED7-4CBC-9B4B-8FFF79C61907} = {4FB02782-D342-49AB-86A4-24131AA4D622}
 		{C8FAAC35-6152-487F-B050-893D5D6D58EE} = {4FB02782-D342-49AB-86A4-24131AA4D622}
+		{9AF5B354-0A88-4B73-9F61-8CE59E82CDA9} = {60E1D492-D0E0-4496-9479-C5CA2AE7CAC9}
+		{62EAD1CC-816A-44C3-B7A4-DA0DB8BC7D40} = {9AF5B354-0A88-4B73-9F61-8CE59E82CDA9}
 	EndGlobalSection
 EndGlobal

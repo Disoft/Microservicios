@@ -23,9 +23,15 @@ builder.Services.AddDbContext<OrderDbContext>(
 // ApiUrls
 builder.Services.Configure<ApiUrls>(opts => builder.Configuration.GetSection("ApiUrls").Bind(opts));
 
+// Azure services bus connection string
+builder.Services.Configure<AzureServiceBus>(opts => builder.Configuration.GetSection("AzureServicesBus").Bind(opts));
+
 // Proxies
 //Sync Communication
 builder.Services.AddHttpClient<ICatalogProxy, CatalogHttpProxy>();
+//Async Communication
+//builder.Services.AddTransient<ICatalogProxy, CatalogQueueProxy>();
+
 
 // Event handlers
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(OrderCreateEventHandler).Assembly));
