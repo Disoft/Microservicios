@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Customer.Api.Controllers
 {
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("v1/clients")]
     public class ClientController : ControllerBase
