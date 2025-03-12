@@ -1,11 +1,14 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Order.Persistence.Database;
 using Order.Service.EventHandlers;
 using Order.Service.Proxy;
 using Order.Service.Proxy.Catalog;
 using Order.Service.Queries;
 using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,8 +26,26 @@ builder.Services.AddDbContext<OrderDbContext>(
     )
 );
 
+// Add Authentication
+var secretKey = Encoding.ASCII.GetBytes(
+    builder.Configuration.GetValue<string>("SecretKey")
+);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(secretKey),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
+
 // HttpContextAccessor
-//builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpContextAccessor();
 
 // ApiUrls
 builder.Services.Configure<ApiUrls>(opts => builder.Configuration.GetSection("ApiUrls").Bind(opts));
@@ -34,9 +55,9 @@ builder.Services.Configure<AzureServiceBus>(opts => builder.Configuration.GetSec
 
 // Proxies
 //Sync Communication
-//builder.Services.AddHttpClient<ICatalogProxy, CatalogHttpProxy>();
+builder.Services.AddHttpClient<ICatalogProxy, CatalogHttpProxy>();
 //Async Communication
-builder.Services.AddTransient<ICatalogProxy, CatalogQueueProxy>();
+//builder.Services.AddTransient<ICatalogProxy, CatalogQueueProxy>();
 
 // Event handlers
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(OrderCreateEventHandler).Assembly));
@@ -52,6 +73,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

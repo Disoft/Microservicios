@@ -16,7 +16,7 @@ namespace Catalog.Api.Controllers
         ) : ControllerBase
     {
         [HttpGet]
-        public async Task<DataCollection<ProductDto>> GetAll(int page = 1, int pageSize = 10, string? ids = null)
+        public async Task<DataCollection<ProductDto>> GetAll(int page = 1, int take = 10, string? ids = null)
         {
             IEnumerable<int>? products = null;
 
@@ -27,7 +27,7 @@ namespace Catalog.Api.Controllers
 
             _logger.LogInformation("--- Retrieve all data ---");
 
-            return await _productQueryService.GetAllAsync(page, pageSize, products);
+            return await _productQueryService.GetAllAsync(page, take, products);
         }
 
         [HttpGet("{id}")]

@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Dismac Commerce</h1>
+    <p>Proyecto desarrollado para el curso de Microservicios con .NET 9.</p>
+    <p>
+        Para más información visita la <a href="https://www.facebook.com/profile.php?id=61551596945209"> página de la empresa facilitadora</a>.
+    </p>
+
+    <hr />
+
+    <div>
+        <h3><b>@User?.Identity?.Name</b>, que bueno tenerte aquí de nuevo.</h3>
+    </div>
+</div>
+
