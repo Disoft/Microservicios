@@ -3,11 +3,14 @@ using Catalog.Service.EventHandlers.Commands;
 using Catalog.Service.Queries;
 using Catalog.Service.Queries.DTOs;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Shared.Utils;
 
 namespace Catalog.Api.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("v1/stocks")]
     public class ProductInStockController(

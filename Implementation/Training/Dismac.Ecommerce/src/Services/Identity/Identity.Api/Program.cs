@@ -1,8 +1,12 @@
 using Identity.Domain;
 using Identity.Persistence.Database;
 using Identity.Service.EventHandlers;
+using Identity.Service.Queries;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,9 +40,29 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredUniqueChars = 1;
 });
 
+// Add Authentication
+var secretKey = Encoding.ASCII.GetBytes(
+    builder.Configuration.GetValue<string>("SecretKey")
+);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(secretKey),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
+
 // Event handlers
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(UserCreateEventHandler).Assembly));
 
+// Queries
+builder.Services.AddTransient<IUserQueryService, UserQueryService>();    
 
 var app = builder.Build();
 
@@ -48,6 +72,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

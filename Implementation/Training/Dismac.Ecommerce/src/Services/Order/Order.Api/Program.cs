@@ -1,8 +1,11 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Order.Persistence.Database;
 using Order.Service.EventHandlers;
 using Order.Service.Proxy;
 using Order.Service.Proxy.Catalog;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,9 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+// HttpContextAccesor
+builder.Services.AddHttpContextAccessor();
+
 // DbContext
 builder.Services.AddDbContext<OrderDbContext>(
     options => options.UseSqlServer(
@@ -19,6 +25,24 @@ builder.Services.AddDbContext<OrderDbContext>(
         x => x.MigrationsHistoryTable("_EFMigrationsHistory", "Order")
     )
 );
+
+// Add Authentication
+var secretKey = Encoding.ASCII.GetBytes(
+    builder.Configuration.GetValue<string>("SecretKey")
+);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(secretKey),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 // ApiUrls
 builder.Services.Configure<ApiUrls>(opts => builder.Configuration.GetSection("ApiUrls").Bind(opts));
@@ -45,6 +69,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

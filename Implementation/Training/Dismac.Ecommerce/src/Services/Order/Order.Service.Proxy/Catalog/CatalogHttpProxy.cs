@@ -9,13 +9,13 @@ namespace Order.Service.Proxy.Catalog
 {
     public class CatalogHttpProxy(
         IOptions<ApiUrls> _apiUrls,
-        HttpClient _httpClient
-        //,IHttpContextAccessor _httpContextAccessor
+        HttpClient _httpClient,
+        IHttpContextAccessor _httpContextAccessor
         ) : ICatalogProxy
     {
         public async Task UpdateStockAsync(ProductInStockUpdateStockCommand command)
         {
-            //_httpClient.AddBearerToken(_httpContextAccessor);
+            _httpClient.AddBearerToken(_httpContextAccessor);
 
             var content = new StringContent(
                 JsonSerializer.Serialize(command),
