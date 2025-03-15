@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqlserverdocker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqlserverdocker
+  template:
+    metadata:
+      labels:
+        app: sqlserverdocker
+    spec:
+      containers:
+      - name: sqlserver
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        ports:
+        - containerPort: 1433
+        env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: MSSQL_SA_PASSWORD
+          value: "123-abc."
+        volumeMounts:
+        - name: sqlserver-storage
+          mountPath: /var/opt/mssql
+      volumes:
+      - name: sqlserver-storage
+        persistentVolumeClaim:
+          claimName: sqlserver-pvc

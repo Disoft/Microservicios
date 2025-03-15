@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dismac.Docker.WebApi", "Dismac.Docker.WebApi\Dismac.Docker.WebApi.csproj", "{2C06FD9A-7DEC-444F-8D21-F0777A6FF061}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{03D9CE49-7286-42F9-9F8B-1439AD70C022}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C06FD9A-7DEC-444F-8D21-F0777A6FF061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C06FD9A-7DEC-444F-8D21-F0777A6FF061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C06FD9A-7DEC-444F-8D21-F0777A6FF061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C06FD9A-7DEC-444F-8D21-F0777A6FF061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03D9CE49-7286-42F9-9F8B-1439AD70C022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03D9CE49-7286-42F9-9F8B-1439AD70C022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03D9CE49-7286-42F9-9F8B-1439AD70C022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03D9CE49-7286-42F9-9F8B-1439AD70C022}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

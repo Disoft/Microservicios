@@ -3,6 +3,10 @@
     "Name": "New Profile",
     "Projects": [
       {
+        "Path": "src\\Services\\Identity\\Identity.Api\\Identity.Api.csproj",
+        "Action": "Start"
+      },
+      {
         "Path": "src\\Services\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
         "Action": "Start"
       },
@@ -11,7 +15,19 @@
         "Action": "Start"
       },
       {
-        "Path": "src\\Services\\Catalog\\Catalog.Listener\\Catalog.Listener.csproj",
+        "Path": "src\\Services\\Customer\\Customer.Api\\Customer.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\Gateway\\Api.Gateway.WebClient\\Api.Gateway.WebClient.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\Clients\\Clients.Authentication\\Clients.Authentication.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\Clients\\Clients.WebClient\\Clients.WebClient.csproj",
         "Action": "Start"
       }
     ]

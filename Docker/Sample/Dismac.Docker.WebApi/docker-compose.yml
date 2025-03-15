@@ -1,0 +1,25 @@
+networks:
+  dismacnetworkapi:
+
+services:
+  sqlserverdocker:
+    container_name: sql-server-docker
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+        - 8006:1433
+    environment:
+        - ACCEPT_EULA=Y
+        - MSSQL_SA_PASSWORD=123-abc.
+    networks:
+        - dismacnetworkapi
+  dismac.docker.webapi:
+    image: ${DOCKER_REGISTRY-}dismacdockerwebapi
+    build:
+      context: .
+      dockerfile: Dismac.Docker.WebApi/Dockerfile
+    networks:
+        - dismacnetworkapi
+    depends_on:
+        - sqlserverdocker
+    ports:
+        - 5001:8080

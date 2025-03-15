@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dismac-docker-webapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dismac-docker-webapi
+  template:
+    metadata:
+      labels:
+        app: dismac-docker-webapi
+    spec:
+      containers:
+      - name: dismac-docker-webapi
+        image: jmostajo/dismacdockerwebapi:v1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          value: "Server=sqlserverdocker;Database=MiBase;User Id=sa;Password=123-abc.;"
