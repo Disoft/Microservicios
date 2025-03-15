@@ -54,7 +54,7 @@ namespace Api.Gateway.Proxies
             request.EnsureSuccessStatusCode();
 
             return JsonSerializer.Deserialize<ClientDto>(
-                await request.Content.ReadAsStringAsync(),
+                await request.Content?.ReadAsStringAsync(),
                 new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true

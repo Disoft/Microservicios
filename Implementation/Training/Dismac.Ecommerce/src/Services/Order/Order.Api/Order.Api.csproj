@@ -22,6 +22,7 @@
     <ProjectReference Include="..\Order.Persistence.Database\Order.Persistence.Database.csproj" />
     <ProjectReference Include="..\Order.Service.EventHandlers\Order.Service.EventHandlers.csproj" />
     <ProjectReference Include="..\Order.Service.Proxy\Order.Service.Proxy.csproj" />
+    <ProjectReference Include="..\Order.Service.Queries\Order.Service.Queries.csproj" />
     <ProjectReference Include="..\Order.Shared\Order.Shared.csproj" />
   </ItemGroup>
 

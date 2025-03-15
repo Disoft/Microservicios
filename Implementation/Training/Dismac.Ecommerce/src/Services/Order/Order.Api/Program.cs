@@ -5,6 +5,7 @@ using Order.Persistence.Database;
 using Order.Service.EventHandlers;
 using Order.Service.Proxy;
 using Order.Service.Proxy.Catalog;
+using Order.Service.Queries;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,10 +57,11 @@ builder.Services.AddHttpClient<ICatalogProxy, CatalogHttpProxy>();
 //Async Communication
 //builder.Services.AddTransient<ICatalogProxy, CatalogQueueProxy>();
 
-
 // Event handlers
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(OrderCreateEventHandler).Assembly));
 
+// Queries
+builder.Services.AddTransient<IOrderQueryService, OrderQueryService>();
 
 var app = builder.Build();
 
